@@ -19,11 +19,13 @@ public class SecurityConfig {
         return http
 
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers(toH2Console()).permitAll();
+                    auth.requestMatchers(("/h2-console/**")).permitAll();
                     auth.requestMatchers("/").permitAll();
+                    auth.requestMatchers("/posts/**").permitAll();
                     auth.anyRequest().authenticated();
                 })
-                .csrf(csrf -> csrf .ignoringRequestMatchers(toH2Console()))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
+                .headers(header -> header.frameOptions(frame -> frame.disable()))
                 .oauth2Login(withDefaults())
                 .formLogin(withDefaults())
                 .build();
