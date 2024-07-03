@@ -12,7 +12,7 @@
     <div class="container">
         <h1>Blog</h1>
         <hr />
-        <ul>
+        <ul sec:authorize="hasRole('ROLE_ADMIN')">
             <li><a th:href="@{/posts/new}">New Post</a></li>
         </ul>
         <div class="posts-container">

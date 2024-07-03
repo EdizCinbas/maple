@@ -40,6 +40,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/new")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String createNewPost(Model model){
         Optional<Account> optionalAccount = accountService.findByEmail("user.user@domain.com");
         if (optionalAccount.isPresent()){
@@ -53,13 +54,14 @@ public class PostController {
     }
 
     @PostMapping("/posts/new")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String saveNewPost(@ModelAttribute Post post) {
         postService.save(post);
         return "redirect:/posts/" + post.getId();
     }
 
     @GetMapping("/posts/{id}/edit")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getPostForEdit(@PathVariable Long id, Model model) {
 
         // find post by id
@@ -75,7 +77,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/{id}")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updatePost(@PathVariable Long id, Post post, BindingResult result, Model model) {
 
         Optional<Post> optionalPost = postService.getById(id);
@@ -93,7 +95,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/delete")
-    @PreAuthorize("hasRole('ROLE_ADMIN')") // this does not work
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deletePost(@PathVariable Long id) {
 
         // find post by id

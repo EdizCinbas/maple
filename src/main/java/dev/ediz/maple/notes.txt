@@ -1,4 +1,6 @@
-Last thing I did:
-    Set up the Login and the Register pages but they do not work
+Last things done:
+    All forms working
+
 To Do:
-    Deconstruct SecurityConfig to allow the register and login pages
+    Implement email verification
+    Implement OAUTH login and grab {email, fname, lname} as already verified

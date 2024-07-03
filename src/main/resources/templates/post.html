@@ -17,7 +17,7 @@
         <h5 th:text="'Created on ' + ${post.createdAt}">Created At</h5>
         <p th:text="${post.body}">body text</p>
   </div>
-    <ul sec:authorize="isAuthenticated()">
+    <ul sec:authorize="hasRole('ROLE_ADMIN')">
         <li><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a> </li>
         <li><a th:href="@{'/posts/' + ${post.id} + '/delete'}">Delete</a> </li>
     </ul>
