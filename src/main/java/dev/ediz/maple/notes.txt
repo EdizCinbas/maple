@@ -4,3 +4,9 @@ Last things done:
 To Do:
     Implement email verification
     Implement OAUTH login and grab {email, fname, lname} as already verified
+    Commenting functionality
+    Make posts MD
+
+
+Don't forget:
+    Make ID generation non-sequential

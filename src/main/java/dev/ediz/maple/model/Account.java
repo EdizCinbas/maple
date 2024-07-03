@@ -17,7 +17,7 @@ import java.util.Set;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String email;
@@ -27,6 +27,8 @@ public class Account {
     private String firstName;
 
     private String lastName;
+
+    private Boolean enabled;
 
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
