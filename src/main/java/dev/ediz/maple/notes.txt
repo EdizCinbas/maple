@@ -1,8 +1,10 @@
 Last things done:
-    All forms working
+    Registration and login forms working
+    Posting and editing functions
 
 To Do:
-    Implement email verification
+    >> MyUserDetailsService is a duplicate of AccountService
+    Check implementation of email verification
     Implement OAUTH login and grab {email, fname, lname} as already verified
     Commenting functionality
     Make posts MD
