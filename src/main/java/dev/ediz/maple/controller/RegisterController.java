@@ -64,12 +64,13 @@ public class RegisterController {
             String appUrl = request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
 
-            return "redirect:/";
+            return "redirect:/home.html";
         } catch (UserAlreadyExistException ex) {
             model.addAttribute("message", ex.getMessage());
             return "register";
         } catch (RuntimeException ex) {
             model.addAttribute("message", ex.getMessage());
+            System.out.println(ex.getMessage());
             return "register";
         }
     }
