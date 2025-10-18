@@ -34,3 +34,15 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+# Database files
+/data/*.db
+/data/*.trace.db
+/data/*.mv.db
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
