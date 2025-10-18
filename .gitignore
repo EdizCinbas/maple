@@ -37,9 +37,7 @@ out/
 
 
 # Database files
-/data/*.db
-/data/*.trace.db
-/data/*.mv.db
+/data/*
 
 .DS_Store
 .DS_Store?
