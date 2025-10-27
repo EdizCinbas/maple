@@ -6,46 +6,39 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edy'S Dev Corner</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Edy's Dev Corner</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Blog</h1>
-        <hr />
-        <div th:if="${message}" th:text="${message}"></div>
-        <ul sec:authorize="hasRole('ROLE_ADMIN')">
-            <li><a th:href="@{/posts/new}">New Post</a></li>
-        </ul>
-        <div class="posts-container">
-            <div class="post" th:each="post : ${posts}">
-                <h2><a th:href="@{'/posts/' + ${post.id}}"
-                        th:text="${post.title}">Title</a>
-                </h2>
-                <h5 th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
-                <h5 th:text="'Published on ' + ${post.createdAt}">Created At</h5>
-                <h5 th:text="'Last updated on ' + ${post.updatedAt}">Created At</h5>
-                <p th:text="${post.body}">body text</p>
-                <br />
-            </div>
-        </div>
-        <hr />
-        <ul sec:authorize="!isAuthenticated()">
-            <li><a th:href="@{/register}">Register</a> </li>
-            <li><a th:href="@{/login}">Login</a> </li>
-        </ul>
-        <div sec:authorize="isAuthenticated()">
-            <form action="#"
-                  th:action="@{/logout}"
-                  method="POST">
-                <div class="form-group">
-                    <label>Hi, <span sec:authentication="name">Username</span></label>
-                    <input type="submit" value="Logout">
-                </div>
-            </form>
+<header>
+    <h1>Edy's Dev Corner</h1>
+    <p>If you never do more than you can, you'll never be more than you are</p>
+</header>
+<nav class="navbar">
+    <a th:href="@{/posts/new}" sec:authorize="hasRole('ROLE_ADMIN')">New Post</a>
+    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+    <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a>
+    <form th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()" style="display: inline;">
+        <button type="submit" style="background: none; border: none; color: white; cursor: pointer;">Logout</button>
+    </form>
+</nav>
+<div class="container">
+    <div th:if="${message}" th:text="${message}" class="alert"></div>
+    <div class="posts-container">
+        <div class="post-card" th:each="post : ${posts}">
+            <h2 class="post-title">
+                <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a>
+            </h2>
+            <p class="post-meta" th:text="'Written by ' + ${post.account.firstName}">Account First Name</p>
+            <p class="post-meta" th:text="'Published on ' + ${post.createdAt}">Created At</p>
+            <p class="post-meta" th:text="'Last updated on ' + ${post.updatedAt}">Updated At</p>
+            <p class="post-content" th:text="${post.body}">body text</p>
         </div>
     </div>
-
+</div>
+<footer>
+    <p>&copy; 2023 Edy's Dev Corner. All rights reserved.</p>
+</footer>
 </body>
 </html>

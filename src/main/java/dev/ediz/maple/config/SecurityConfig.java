@@ -30,6 +30,7 @@ public class SecurityConfig {
             "/h2-console/**",
             "/posts/**",
             "/register",
+            "/css/**",
     };
 
     @Bean
