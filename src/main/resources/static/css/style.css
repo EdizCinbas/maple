@@ -140,3 +140,19 @@ footer p {
     grid-template-columns: 1fr;
   }
 }
+
+.button-link {
+  display: inline-block;
+  padding: 6px 10px;
+  background-color: #007BFF; /* Button background color */
+  color: white; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.button-link:hover {
+  background-color: #0056b3; /* Darker background on hover */
+  color: #ffffff; /* Ensure text remains white */
+}

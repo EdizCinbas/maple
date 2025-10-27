@@ -7,12 +7,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blog :: Post</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <div class="container">
-    <a th:href="@{'/'}">Home</a>
+    <a th:href="@{/}" class="button-link">Home</a>
     <div class="post">
         <h2 th:text="${post.title}">Title</h2>
         <h5 th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>

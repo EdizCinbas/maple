@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register Page</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container">
     <h1>Blog</h1>
     <hr />
-    <a th:href="@{/}">Home</a>
+    <a th:href="@{/}" class="button-link">Home</a>
     <form action="#"
           th:action="@{'/posts/new'}"
           th:object="${post}"
@@ -21,13 +21,12 @@
         <input type="hidden" th:field="*{createdAt}" />
         <h2>Write new Post</h2>
         <div>
-            <label for="new-post-title">Title</label>
             <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title" />
         </div>
         <div>
-        <label for="new-post-body">Body</label>
-        <textarea id="new-post-body" th:field="*{body}"></textarea>
-    </div>
+            <label for="new-post-body">Body</label>
+            <textarea id="new-post-body" th:field="*{body}"></textarea>
+        </div>
         <button type="submit">Publish Post</button>
     </form>
 </div>
