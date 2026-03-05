@@ -13,6 +13,7 @@ public class PasswordMatchesValidator
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context){
         Account account = (Account) obj;
+        if (account.getConfirmPassword() == null) return true;
         return account.getPassword().equals(account.getConfirmPassword());
     }
 }

@@ -1,14 +1,4 @@
-Last things done:
-    Registration and login forms working
-    Posting and editing functions
-
 To Do:
-    >> MyUserDetailsService is a duplicate of AccountService
-    Check implementation of email verification
+    Add multi account system
     Implement OAUTH login and grab {email, fname, lname} as already verified
     Commenting functionality
-    Make posts MD
-
-
-Don't forget:
-    Make ID generation non-sequential

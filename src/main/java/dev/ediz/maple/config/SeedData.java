@@ -30,7 +30,7 @@ public class SeedData implements CommandLineRunner {
     public void run(String... args) throws Exception {
         List<Post> posts = postService.getAll();
 
-        if (posts.size() == 0) {
+        if (posts.isEmpty()) {
 
             Authority user = new Authority();
             user.setName("ROLE_USER");
@@ -40,53 +40,27 @@ public class SeedData implements CommandLineRunner {
             admin.setName("ROLE_ADMIN");
             authorityRepository.save(admin);
 
-            // account1 (plain user) removed — only admin account is used
-//            Account account1 = new Account();
-//            account1.setFirstName("user");
-//            account1.setLastName("user");
-//            account1.setEmail("user.user@domain.com");
-//            account1.setPassword("password");
-//            account1.setEnabled(true);
-//            Set<Authority> authorities1 = new HashSet<>();
-//            authorityRepository.findById("ROLE_USER").ifPresent(authorities1::add);
-//            account1.setAuthorities(authorities1);
-
-            Account account2 = new Account();
-
-//            account1.setFirstName("user");
-//            account1.setLastName("user");
-//            account1.setEmail("user.user@domain.com");
-//            account1.setPassword("password");
-//            account1.setEnabled(true);
-//            Set<Authority> authorities1 = new HashSet<>();
-//            authorityRepository.findById("ROLE_USER").ifPresent(authorities1::add);
-//            account1.setAuthorities(authorities1);
-
-            account2.setFirstName("admin");
-            account2.setLastName("admin");
-            account2.setEmail("admin.admin@domain.com");
-            account2.setPassword("password");
-            account2.setEnabled(true);
-            Set<Authority> authorities2 = new HashSet<>();
-            authorityRepository.findById("ROLE_USER").ifPresent(authorities2::add);
-            authorityRepository.findById("ROLE_ADMIN").ifPresent(authorities2::add);
-            account2.setAuthorities(authorities2);
-
-//            accountService.save(account1);
-            accountService.save(account2);
-
-
+            Account account = new Account();
+            account.setFirstName("admin");
+            account.setLastName("admin");
+            account.setEmail("admin.admin@domain.com");
+            account.setPassword("password");
+            account.setEnabled(true);
+            Set<Authority> authorities = new HashSet<>();
+            authorityRepository.findById("ROLE_USER").ifPresent(authorities::add);
+            authorityRepository.findById("ROLE_ADMIN").ifPresent(authorities::add);
+            account.setAuthorities(authorities);
+            accountService.save(account);
 
             Post post1 = new Post();
-            Post post2 = new Post();
-
             post1.setTitle("Title of post 1");
             post1.setBody("Body of post 1");
-            post1.setAccount(account2); // was account1, reassigned to admin
+            post1.setAccount(account);
 
+            Post post2 = new Post();
             post2.setTitle("Title of post 2");
             post2.setBody("Body of post 2");
-            post2.setAccount(account2);
+            post2.setAccount(account);
 
             postService.save(post1);
             postService.save(post2);

@@ -22,9 +22,6 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-//    @Autowired
-//    private VerificationTokenRepository tokenRepository;
-
     public Account save(Account account) {
         if (findByEmail(account.getEmail()).isPresent()) {
             throw new UserAlreadyExistException("There is an account with that email address: "
@@ -37,14 +34,5 @@ public class AccountService {
     public Optional<Account> findByEmail(String email) {
         return accountRepository.findOneByEmail(email);
     }
-
-//    public void createVerificationToken(Account account, String token) {
-//        VerificationToken myToken = new VerificationToken(token, account);
-//        tokenRepository.save(myToken);
-//    }
-
-//    public VerificationToken getVerificationToken(String VerificationToken) {
-//        return tokenRepository.findByToken(VerificationToken);
-//    }
 
 }

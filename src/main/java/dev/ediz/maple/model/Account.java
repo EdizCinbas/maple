@@ -1,11 +1,8 @@
 package dev.ediz.maple.model;
 
-import dev.ediz.maple.model.Post;
-import dev.ediz.maple.validator.OnCreate;
 import dev.ediz.maple.validator.PasswordMatches;
-import dev.ediz.maple.validator.ValidEmail;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -20,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@PasswordMatches(groups = OnCreate.class)
+@PasswordMatches
 public class Account {
 
     @Id
@@ -28,7 +25,7 @@ public class Account {
     private Long id;
 
 
-    @ValidEmail
+    @Email
     @NotNull
     @NotEmpty
     private String email;
