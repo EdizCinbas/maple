@@ -38,7 +38,7 @@
         <h2 class="post-title">
           <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a>
         </h2>
-        <p class="post-excerpt" th:text="${post.body}"></p>
+        <p class="post-excerpt" th:text="${excerpts[post.id]}"></p>
         <a th:href="@{'/posts/' + ${post.id}}" class="btn btn-primary btn-sm mt-2">Read more</a>
       </div>
     </div>

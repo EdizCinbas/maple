@@ -27,12 +27,12 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String getPost (@PathVariable Long id, Model model){
-        // find post by id
         Optional<Post> optionalPost = postService.getById(id);
 
         if (optionalPost.isPresent()){
             Post post = optionalPost.get();
             model.addAttribute("post", post);
+            model.addAttribute("renderedBody", postService.renderMarkdown(post.getBody()));
             return "post";
         }else {
             return "404";

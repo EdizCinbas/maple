@@ -188,3 +188,94 @@ main { flex: 1; }
   font-weight: 900;
   color: var(--brand-accent);
 }
+
+/* ── Rendered Markdown ── */
+.post-body h1, .post-body h2, .post-body h3,
+.post-body h4, .post-body h5, .post-body h6 {
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+}
+
+.post-body p { margin-bottom: 1.25rem; }
+
+.post-body a { color: var(--brand-accent); }
+.post-body a:hover { color: var(--brand-accent-hover); }
+
+.post-body img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.post-body iframe, .post-body video {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.post-body pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+.post-body code {
+  background: #f1f5f9;
+  color: #be185d;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.post-body pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.post-body blockquote {
+  border-left: 4px solid var(--brand-accent);
+  margin: 1.5rem 0;
+  padding: 0.5rem 1.25rem;
+  color: var(--muted);
+  background: #f8fafc;
+  border-radius: 0 8px 8px 0;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.post-body th, .post-body td {
+  border: 1px solid var(--card-border);
+  padding: 0.6rem 1rem;
+  text-align: left;
+}
+
+.post-body th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+.post-body ul, .post-body ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* EasyMDE tweaks */
+.EasyMDEContainer .CodeMirror {
+  border-radius: 0 0 8px 8px;
+  font-size: 0.95rem;
+  min-height: 300px;
+}
+
+.editor-toolbar {
+  border-radius: 8px 8px 0 0;
+}

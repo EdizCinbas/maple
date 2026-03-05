@@ -34,7 +34,7 @@
         &middot; <span th:text="${post.createdAt}"></span>
       </p>
     </div>
-    <div class="post-body" th:text="${post.body}"></div>
+    <div class="post-body" th:utext="${renderedBody}"></div>
   </article>
 
   <div class="d-flex gap-2 mt-4" sec:authorize="hasRole('ROLE_ADMIN')">
