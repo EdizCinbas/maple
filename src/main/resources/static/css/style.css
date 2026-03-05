@@ -1,158 +1,190 @@
+/* ── Custom properties ── */
 :root {
-  --primary-color: #1a202c;
-  --secondary-color: #4a90e2;
-  --background-color: #f9fafb;
-  --text-color: #2d3748;
-  --muted-text-color: #718096;
-  --border-color: #e2e8f0;
-  --card-bg-color: #ffffff;
-  --hover-color: #2b6cb0;
+  --brand-dark: #0f172a;
+  --brand-accent: #6366f1;
+  --brand-accent-hover: #4f46e5;
+  --muted: #64748b;
+  --card-border: #e2e8f0;
 }
 
+/* ── Base ── */
 body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.8;
-  color: var(--text-color);
-  background: var(--background-color);
-  margin: 0;
-  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  flex: 1;
+main { flex: 1; }
+
+/* ── Navbar ── */
+.site-navbar {
+  background: var(--brand-dark);
 }
 
-/* Header */
-header {
-  background: var(--primary-color);
-  color: white;
-  padding: 1rem 0;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
+.site-navbar .navbar-brand {
   font-weight: 700;
+  font-size: 1.25rem;
+  color: #fff !important;
+  letter-spacing: -0.02em;
 }
 
-header p {
-  margin: 0.5rem 0 0;
-  font-size: 1.2rem;
-  color: var(--muted-text-color);
+.site-navbar .nav-link {
+  color: #cbd5e1 !important;
+  font-size: 0.9rem;
+  transition: color 0.2s;
 }
 
-/* Navigation */
-.navbar {
-  display: flex;
-  justify-content: center;
-  background: var(--primary-color);
-  padding: 0.5rem 0;
+.site-navbar .nav-link:hover {
+  color: #fff !important;
 }
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
+.site-navbar .btn-accent {
+  background: var(--brand-accent);
+  color: #fff;
+  border: none;
+  font-size: 0.875rem;
+  padding: 0.35rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
 }
 
-.navbar a:hover {
-  color: var(--hover-color);
+.site-navbar .btn-accent:hover {
+  background: var(--brand-accent-hover);
+  color: #fff;
 }
 
-/* Blog Posts */
-.posts-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+/* ── Hero ── */
+.site-hero {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 3.5rem 0 2.5rem;
+  text-align: center;
 }
 
+.site-hero h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.site-hero p {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* ── Post cards ── */
 .post-card {
-  background: var(--card-bg-color);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  height: 100%;
 }
 
 .post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
 }
 
-.post-title a {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-color);
+.post-card .post-title a {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-.post-title a:hover {
-  color: var(--hover-color);
+.post-card .post-title a:hover {
+  color: var(--brand-accent);
 }
 
-.post-meta {
-  font-size: 0.9rem;
-  color: var(--muted-text-color);
-  margin-bottom: 1rem;
+.post-card .post-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
-.post-content {
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-bottom: 1rem;
+.post-card .post-excerpt {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-top: 0.75rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Footer */
-footer {
-  background: var(--primary-color);
-  color: white;
+/* ── Single post ── */
+.post-header {
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.post-body {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #334155;
+}
+
+/* ── Forms ── */
+.form-card {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 520px;
+  margin: 3rem auto;
+}
+
+.form-card h2 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.form-card .form-control:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+.btn-primary {
+  background: var(--brand-accent) !important;
+  border-color: var(--brand-accent) !important;
+}
+
+.btn-primary:hover {
+  background: var(--brand-accent-hover) !important;
+  border-color: var(--brand-accent-hover) !important;
+}
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--brand-dark);
+  color: #64748b;
   text-align: center;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
+  font-size: 0.85rem;
   margin-top: auto;
 }
 
-footer p {
-  margin: 0;
-  font-size: 0.9rem;
+/* ── 404 ── */
+.error-page {
+  text-align: center;
+  padding: 6rem 1rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
-
-  .posts-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.button-link {
-  display: inline-block;
-  padding: 6px 10px;
-  background-color: #007BFF; /* Button background color */
-  color: white; /* Text color */
-  text-decoration: none; /* Remove underline */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 14px; /* Font size */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
-}
-
-.button-link:hover {
-  background-color: #0056b3; /* Darker background on hover */
-  color: #ffffff; /* Ensure text remains white */
+.error-page h1 {
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--brand-accent);
 }
