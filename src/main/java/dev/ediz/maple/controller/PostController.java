@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,7 +77,7 @@ public class PostController {
 
     @PostMapping("/posts/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String updatePost(@PathVariable Long id, Post post, BindingResult result, Model model) {
+    public String updatePost(@PathVariable Long id, Post post) {
 
         Optional<Post> optionalPost = postService.getById(id);
         if (optionalPost.isPresent()) {
@@ -87,11 +86,11 @@ public class PostController {
             existingPost.setTitle(post.getTitle());
             existingPost.setBody(post.getBody());
 
-
             postService.save(existingPost);
+            return "redirect:/posts/" + id;
         }
 
-        return "redirect:/posts/" + post.getId();
+        return "404";
     }
 
     @GetMapping("/posts/{id}/delete")

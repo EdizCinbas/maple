@@ -27,6 +27,7 @@ public class SecurityConfig {
             // "/register" — registration endpoint disabled
             "/css/**",
             "/uploads/**",
+            "/404-not-found",
     };
 
     @Bean
@@ -38,8 +39,11 @@ public class SecurityConfig {
                     auth.requestMatchers(WHITELIST).permitAll();
                     auth.anyRequest().authenticated();
                 })
+                .exceptionHandling(ex -> ex
+                        .accessDeniedPage("/404-not-found")
+                )
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
-                .headers(header -> header.frameOptions(frame -> frame.disable()))
+                .headers(header -> header.frameOptions(frame -> frame.sameOrigin()))
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("email")
@@ -52,5 +56,4 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/login?logout"))
                 .build();
     }
-
 }
