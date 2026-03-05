@@ -15,9 +15,9 @@
   <a class="navbar-brand" th:href="@{/}">Edy's Dev Corner</a>
 </nav>
 
-<main class="container">
-  <div class="form-card">
-    <h2>Edit Post</h2>
+<main class="container py-5">
+  <div class="editor-card">
+    <h2 class="mb-4">Edit Post</h2>
     <form th:action="@{'/posts/{id}'(id=${post.id})}" th:object="${post}" method="POST">
       <input type="hidden" th:field="*{account}" />
       <input type="hidden" th:field="*{createdAt}" />

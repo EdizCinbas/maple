@@ -56,26 +56,6 @@ main { flex: 1; }
   color: #fff;
 }
 
-/* ── Hero ── */
-.site-hero {
-  background: var(--brand-dark);
-  color: #fff;
-  padding: 3.5rem 0 2.5rem;
-  text-align: center;
-}
-
-.site-hero h1 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-bottom: 0.5rem;
-}
-
-.site-hero p {
-  color: #94a3b8;
-  font-size: 1.05rem;
-  margin: 0;
-}
 
 /* ── Post cards ── */
 .post-card {
@@ -150,6 +130,14 @@ main { flex: 1; }
 .form-card h2 {
   font-weight: 700;
   margin-bottom: 1.5rem;
+}
+
+/* Editor pages get the full container width */
+.editor-card {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
 }
 
 .form-card .form-control:focus {
@@ -273,7 +261,7 @@ main { flex: 1; }
 .EasyMDEContainer .CodeMirror {
   border-radius: 0 0 8px 8px;
   font-size: 0.95rem;
-  min-height: 300px;
+  min-height: 500px;
 }
 
 .editor-toolbar {
