@@ -18,7 +18,7 @@
 <nav class="navbar">
     <a th:href="@{/posts/new}" sec:authorize="hasRole('ROLE_ADMIN')">New Post</a>
     <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
-    <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a>
+    <!-- <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a> — registration disabled -->
     <form th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()" style="display: inline;">
         <button type="submit" style="background: none; border: none; color: white; cursor: pointer;">Logout</button>
     </form>

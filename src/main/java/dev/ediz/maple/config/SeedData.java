@@ -40,17 +40,27 @@ public class SeedData implements CommandLineRunner {
             admin.setName("ROLE_ADMIN");
             authorityRepository.save(admin);
 
-            Account account1 = new Account();
+            // account1 (plain user) removed — only admin account is used
+//            Account account1 = new Account();
+//            account1.setFirstName("user");
+//            account1.setLastName("user");
+//            account1.setEmail("user.user@domain.com");
+//            account1.setPassword("password");
+//            account1.setEnabled(true);
+//            Set<Authority> authorities1 = new HashSet<>();
+//            authorityRepository.findById("ROLE_USER").ifPresent(authorities1::add);
+//            account1.setAuthorities(authorities1);
+
             Account account2 = new Account();
 
-            account1.setFirstName("user");
-            account1.setLastName("user");
-            account1.setEmail("user.user@domain.com");
-            account1.setPassword("password");
-            account1.setEnabled(true);
-            Set<Authority> authorities1 = new HashSet<>();
-            authorityRepository.findById("ROLE_USER").ifPresent(authorities1::add);
-            account1.setAuthorities(authorities1);
+//            account1.setFirstName("user");
+//            account1.setLastName("user");
+//            account1.setEmail("user.user@domain.com");
+//            account1.setPassword("password");
+//            account1.setEnabled(true);
+//            Set<Authority> authorities1 = new HashSet<>();
+//            authorityRepository.findById("ROLE_USER").ifPresent(authorities1::add);
+//            account1.setAuthorities(authorities1);
 
             account2.setFirstName("admin");
             account2.setLastName("admin");
@@ -62,7 +72,7 @@ public class SeedData implements CommandLineRunner {
             authorityRepository.findById("ROLE_ADMIN").ifPresent(authorities2::add);
             account2.setAuthorities(authorities2);
 
-            accountService.save(account1);
+//            accountService.save(account1);
             accountService.save(account2);
 
 
@@ -72,7 +82,7 @@ public class SeedData implements CommandLineRunner {
 
             post1.setTitle("Title of post 1");
             post1.setBody("Body of post 1");
-            post1.setAccount(account1);
+            post1.setAccount(account2); // was account1, reassigned to admin
 
             post2.setTitle("Title of post 2");
             post2.setBody("Body of post 2");

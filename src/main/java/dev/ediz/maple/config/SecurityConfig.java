@@ -29,7 +29,7 @@ public class SecurityConfig {
             "/",
             "/h2-console/**",
             "/posts/**",
-            "/register",
+            // "/register" — registration endpoint disabled
             "/css/**",
     };
 
@@ -44,7 +44,6 @@ public class SecurityConfig {
                 })
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
                 .headers(header -> header.frameOptions(frame -> frame.disable()))
-//                .oauth2Login(withDefaults())
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("email")

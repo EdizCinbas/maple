@@ -22,10 +22,4 @@ public class HomeController {
         model.addAttribute("posts", posts);
         return "home";
     }
-
-    @GetMapping("/secured")
-    public String secured() {
-        return "Hello, Secured!";
-    }
-
 }

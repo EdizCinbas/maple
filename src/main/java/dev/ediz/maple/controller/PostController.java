@@ -41,8 +41,8 @@ public class PostController {
 
     @GetMapping("/posts/new")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String createNewPost(Model model){
-        Optional<Account> optionalAccount = accountService.findByEmail("user.user@domain.com");
+    public String createNewPost(Model model, java.security.Principal principal){
+        Optional<Account> optionalAccount = accountService.findByEmail(principal.getName());
         if (optionalAccount.isPresent()){
             Post post = new Post();
             post.setAccount(optionalAccount.get());
