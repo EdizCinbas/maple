@@ -22,11 +22,12 @@ public class HomeController {
         List<Post> posts = postService.getAll();
         Map<Long, String> excerpts = new LinkedHashMap<>();
         for (Post post : posts) {
-            String plain = postService.renderMarkdownToPlainText(post.getBody());
-            excerpts.put(post.getId(), plain.length() > 200 ? plain.substring(0, 200) + "…" : plain);
+            String excerpt = postService.renderExcerpt(post.getBody(), 200);
+            excerpts.put(post.getId(), excerpt);
         }
         model.addAttribute("posts", posts);
         model.addAttribute("excerpts", excerpts);
         return "home";
     }
 }
+

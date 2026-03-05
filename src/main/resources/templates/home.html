@@ -16,6 +16,7 @@
   <a class="navbar-brand" th:href="@{/}">Edy's Dev Corner</a>
   <div class="d-flex align-items-center gap-2">
     <a th:href="@{/posts/new}" class="btn btn-accent btn-sm" sec:authorize="hasRole('ROLE_ADMIN')">+ New Post</a>
+    <a th:href="@{/media}" class="nav-link" style="font-size:0.875rem;" sec:authorize="hasRole('ROLE_ADMIN')">Media</a>
     <a th:href="@{/login}" class="nav-link" sec:authorize="!isAuthenticated()">Login</a>
     <!-- <a th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a> — registration disabled -->
     <form th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()" class="m-0">
@@ -30,7 +31,7 @@
   <div class="row g-4">
     <div class="col-md-6 col-lg-4" th:each="post : ${posts}">
       <div class="post-card">
-        <p class="post-meta mb-1" th:text="'By ' + ${post.account.firstName} + ' · ' + ${post.createdAt}"></p>
+        <p class="post-meta mb-1" th:text="'By ' + ${post.account.firstName} + ' · ' + ${#temporals.format(post.createdAt, 'HH:mm, d MMM yyyy')}"></p>
         <h2 class="post-title">
           <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a>
         </h2>

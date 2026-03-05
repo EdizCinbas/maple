@@ -16,6 +16,7 @@
   <a class="navbar-brand" th:href="@{/}">Edy's Dev Corner</a>
   <div class="d-flex align-items-center gap-2">
     <a th:href="@{/posts/new}" class="btn btn-accent btn-sm" sec:authorize="hasRole('ROLE_ADMIN')">+ New Post</a>
+    <a th:href="@{/media}" class="nav-link" style="font-size:0.875rem;" sec:authorize="hasRole('ROLE_ADMIN')">Media</a>
     <a th:href="@{/login}" class="nav-link" sec:authorize="!isAuthenticated()">Login</a>
     <form th:action="@{/logout}" method="POST" sec:authorize="isAuthenticated()" class="m-0">
       <button type="submit" class="btn btn-outline-secondary btn-sm" style="color:#cbd5e1;border-color:#334155;">Logout</button>
@@ -31,7 +32,7 @@
       <h1 th:text="${post.title}">Title</h1>
       <p class="text-muted small">
         By <strong th:text="${post.account.firstName}"></strong>
-        &middot; <span th:text="${post.createdAt}"></span>
+        &middot; <span th:text="${#temporals.format(post.createdAt, 'HH:mm, d MMM yyyy')}"></span>
       </p>
     </div>
     <div class="post-body" th:utext="${renderedBody}"></div>
@@ -39,7 +40,27 @@
 
   <div class="d-flex gap-2 mt-4" sec:authorize="hasRole('ROLE_ADMIN')">
     <a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="btn btn-outline-primary btn-sm">Edit</a>
-    <a th:href="@{'/posts/' + ${post.id} + '/delete'}" class="btn btn-outline-danger btn-sm">Delete</a>
+    <button type="button" class="btn btn-outline-danger btn-sm"
+            data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+  </div>
+
+  <!-- Delete confirm modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Delete post?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-muted">
+          "<span th:text="${post.title}"></span>" will be permanently deleted.
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <a th:href="@{'/posts/' + ${post.id} + '/delete'}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -49,4 +70,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
 </html>

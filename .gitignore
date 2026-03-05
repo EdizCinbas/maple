@@ -1,4 +1,5 @@
 .gradle
+gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -35,9 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
-
 # Database files
-/data/*
+data/
+uploads/
 
 .DS_Store
 .DS_Store?
