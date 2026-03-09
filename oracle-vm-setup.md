@@ -1,5 +1,7 @@
 # Oracle Cloud VM Setup — Maple Blog
 
+> ⚠️ **Disclaimer:** I have personally used this exact guide to deploy Maple, but it is provided as-is with **no guarantee, no warranty, and no claim of completeness or security**. You are solely responsible for your own server. Use at your own risk.
+
 > **Shape: VM.Standard.A1.Flex (Always Free)** — ARM64 (Ampere)
 > Allocate 2 OCPUs / 12 GB RAM (up to 4 OCPU / 24 GB, all free).
 
@@ -88,8 +90,11 @@ sudo nano /etc/nginx/nginx.conf
 Add inside `http { ... }` before the `include` lines:
 ```nginx
 limit_req_zone $binary_remote_addr zone=maple:10m rate=20r/s;
+limit_req_zone $binary_remote_addr zone=login:10m rate=5r/m;
 server_tokens off;
 ```
+
+> `zone=login` allows only **5 POST /login attempts per minute per IP**. This is the brute force guard. `zone=maple` is the general flood/DDoS guard and stays as-is.
 
 Delete the default `server { listen 80 ... }` block entirely — it conflicts with `maple.conf`.
 
@@ -108,6 +113,16 @@ server {
 
     limit_req zone=maple burst=50 nodelay;
     client_max_body_size 55M;
+
+    # Brute force protection — 5 login attempts per minute per IP
+    location = /login {
+        limit_req zone=login burst=3 nodelay;
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
 
     location /uploads/ {
         alias /opt/maple/uploads/;

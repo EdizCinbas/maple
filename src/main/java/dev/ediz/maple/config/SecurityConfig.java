@@ -44,7 +44,10 @@ public class SecurityConfig {
                         .accessDeniedPage("/404-not-found")
                 )
                 .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
-                .headers(header -> header.frameOptions(frame -> frame.sameOrigin()))
+                .headers(header -> header
+                        .frameOptions(frame -> frame.sameOrigin())
+                        .httpStrictTransportSecurity(hsts -> hsts.includeSubDomains(true).maxAgeInSeconds(31536000))
+                )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .usernameParameter("email")
