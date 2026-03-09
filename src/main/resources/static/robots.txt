@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /posts/
+
+Disallow: /admin/
+Disallow: /login
+Disallow: /logout
+Disallow: /register
+Disallow: /media
+Disallow: /uploads/
+

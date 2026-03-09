@@ -28,6 +28,7 @@ public class SecurityConfig {
             "/css/**",
             "/uploads/**",
             "/404-not-found",
+            "/robots.txt",
     };
 
     @Bean
