@@ -15,8 +15,9 @@
 <body>
 
 <nav class="navbar site-navbar px-3">
-  <a class="navbar-brand" th:href="@{/}">Edy's Dev Corner</a>
+  <a class="navbar-brand" th:href="@{/blog}">Edy's Dev Corner</a>
   <div class="d-flex align-items-center gap-2">
+    <a th:href="@{/}" class="btn btn-accent btn-sm" style="font-size:0.875rem;">Portfolio</a>
     <a th:href="@{/posts/new}" class="btn btn-accent btn-sm">+ New Post</a>
     <form th:action="@{/logout}" method="POST" class="m-0">
       <button type="submit" class="btn btn-outline-secondary btn-sm" style="color:#cbd5e1;border-color:#334155;">Logout</button>
@@ -235,4 +236,3 @@
 </script>
 </body>
 </html>
-

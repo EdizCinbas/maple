@@ -29,6 +29,8 @@ public class SecurityConfig {
             "/uploads/**",
             "/404-not-found",
             "/robots.txt",
+            "/blog",
+            "/favicon.ico",
     };
 
     @Bean
@@ -52,7 +54,7 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/", true)
+                        .defaultSuccessUrl("/blog", true)
                         .failureUrl("/login?error")
                         .permitAll())
                 .logout(logout -> logout

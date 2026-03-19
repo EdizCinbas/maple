@@ -15,7 +15,7 @@
 <body>
 
 <nav class="navbar site-navbar px-3">
-  <a class="navbar-brand" th:href="@{/}">Edy's Dev Corner</a>
+  <a class="navbar-brand" th:href="@{/blog}">Edy's Dev Corner</a>
 </nav>
 
 <main class="container py-5">
@@ -36,7 +36,7 @@
       <input type="file" id="mediaFileInput" accept="image/*,video/*" style="display:none">
       <div class="d-flex gap-2">
         <button type="submit" class="btn btn-primary">Publish</button>
-        <a th:href="@{/}" class="btn btn-outline-secondary">Cancel</a>
+        <a th:href="@{/blog}" class="btn btn-outline-secondary">Cancel</a>
       </div>
     </form>
     <!-- upload feedback toast -->
@@ -143,4 +143,3 @@
 </script>
 </body>
 </html>
-

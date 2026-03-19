@@ -13,8 +13,9 @@
 <body>
 
 <nav class="navbar site-navbar px-3">
-  <a class="navbar-brand" th:href="@{/}">Edy's Dev Corner</a>
+  <a class="navbar-brand" th:href="@{/blog}">Edy's Dev Corner</a>
   <div class="d-flex align-items-center gap-2">
+    <a th:href="@{/}" class="btn btn-accent btn-sm" style="font-size:0.875rem;">Portfolio</a>
     <a th:href="@{/posts/new}" class="btn btn-accent btn-sm" sec:authorize="hasRole('ROLE_ADMIN')">+ New Post</a>
     <a th:href="@{/media}" class="nav-link" style="font-size:0.875rem;" sec:authorize="hasRole('ROLE_ADMIN')">Media</a>
     <a th:href="@{/login}" class="nav-link" sec:authorize="!isAuthenticated()">Login</a>

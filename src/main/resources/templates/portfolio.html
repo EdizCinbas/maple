@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ediz Cinbas</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/portfolio.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="portfolio">
+
+  <!-- Navigation -->
+  <nav class="portfolio-nav">
+    <div class="container">
+      <div class="logo">
+        <a href="#" style="color: white; font-weight: 700; font-size: 1.2rem; text-decoration: none; font-family: 'JetBrains Mono', monospace;">E.C</a>
+      </div>
+      <div class="nav-links d-none d-md-flex align-items-center">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a th:href="@{/blog}" class="nav-blog-btn">Dev Log</a>
+      </div>
+      <div class="d-md-none">
+        <a th:href="@{/blog}" class="nav-blog-btn">Dev Log</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Vanta Background -->
+  <div id="vanta-bg"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-content gs-reveal">
+        <span class="hero-subtitle">Hi, my name is</span>
+        <h1 class="hero-title">Ediz</h1>
+<!--        <h1 class="hero-title" style="color: #64748b;">I build things.</h1>-->
+        <p class="hero-desc">
+          I'm a computer science student at University College London with some free time to build pretty much whatever,
+          from full stack applications to video games.
+        </p>
+        <div class="social-links mt-4">
+          <a href="https://github.com/EdizCinbas" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/ediz-cinbas-292a35254/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:oecinbas@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/EdizCinbas/EdizCinbas/blob/main/Ediz_CV.pdf" target="_blank" rel="noopener" aria-label="CV" style="margin-left: 8px; display: inline-flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--accent); text-decoration: none; transition: color 0.2s;">
+            <i class="fas fa-file-pdf" style="font-size: 1.25em; margin-right: 6px;"></i>Read my CV in PDF form
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="container">
+    <h2 class="section-title gs-reveal">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text gs-reveal">
+        <p>
+          Software engineer with a strong foundation in AI, cybersecurity, and full-stack development. Skilled
+          in Python, Java, and C, with experience building user-focused machine learning systems, secure web
+          applications, and responsive front-end interfaces. Driven by a commitment to responsible AI and building
+          scalable tools.
+        </p>
+        <p>
+          Currently, I am pursuing a BSc in Computer Science at <strong>University College London</strong> (tracking for a First Class 1:1)
+        </p>
+        <p>
+          I've worked on the software of companies like <strong>HubSpot</strong>,
+          done cybersecurity at <strong>Barikat</strong>, and assisted programming modules at <strong>UCL</strong>.
+        </p>
+        <p>Here are a few technologies I've been working with recently:</p>
+        <ul style="display: grid; grid-template-columns: repeat(2, minmax(140px, 200px)); gap: 0 10px; padding: 0; margin: 20px 0 0 0; overflow: hidden; list-style: none;">
+          <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+            <span style="position: absolute; left: 0; color: var(--accent);">▹</span> JavaScript
+          </li>
+          <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+            <span style="position: absolute; left: 0; color: var(--accent);">▹</span> React
+          </li>
+          <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+            <span style="position: absolute; left: 0; color: var(--accent);">▹</span> Java & Spring Boot
+          </li>
+          <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+            <span style="position: absolute; left: 0; color: var(--accent);">▹</span> Python
+          </li>
+          <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+            <span style="position: absolute; left: 0; color: var(--accent);">▹</span> C / C++
+          </li>
+          <li style="position: relative; margin-bottom: 10px; padding-left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+            <span style="position: absolute; left: 0; color: var(--accent);">▹</span> SQL
+          </li>
+        </ul>
+      </div>
+      <div class="about-image-wrapper gs-reveal">
+        <!-- Placeholder for actual image -->
+        <img src="uploads/profilepic.jpeg" alt="Ediz Cinbas" class="about-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="container">
+    <h2 class="section-title gs-reveal">Where I've Worked</h2>
+
+    <div class="experience-list">
+
+      <div class="experience-item gs-reveal">
+        <div class="exp-header">
+          <h3 class="exp-role">Software Engineering Intern <span class="exp-company">@ HubSpot</span></h3>
+          <span class="exp-date">July 2025 – September 2025</span>
+        </div>
+        <ul class="exp-details">
+          <li>Resolved 30+ front-end tickets in a high-traffic React codebase, improving clarity and reliability.</li>
+          <li>Contributed to a new automated user-sync feature increasing contact sync completion rates by 25%.</li>
+          <li>Collaborated cross-functionally with product, design, and QA to ensure zero-regression releases.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item gs-reveal">
+        <div class="exp-header">
+          <h3 class="exp-role">Cybersecurity Intern <span class="exp-company">@ Barikat Cyber Security</span></h3>
+          <span class="exp-date">July 2024 – August 2024</span>
+        </div>
+        <ul class="exp-details">
+          <li>Contributed to an elite pentesting team conducting 15+ comprehensive vulnerability assessments.</li>
+          <li>Assisted in identifying and remediating critical security flaws in enterprise client systems.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item gs-reveal">
+        <div class="exp-header">
+          <h3 class="exp-role">Teaching Assistant & Student Ambassador <span class="exp-company">@ UCL</span></h3>
+          <span class="exp-date">March 2024 – Present</span>
+        </div>
+        <ul class="exp-details">
+          <li>Guided 30+ first-year students in C and Java programming labs; provided technical mentorship.</li>
+          <li>Supported 400+ prospective students; participated in Q&As about curriculum and student life queries.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item gs-reveal">
+        <div class="exp-header">
+          <h3 class="exp-role">Market Research Intern <span class="exp-company">@ Twentify Consumer Research</span></h3>
+          <span class="exp-date">August 2021 – September 2021</span>
+        </div>
+        <ul class="exp-details">
+          <li>Supported multi-phase market research projects and enhanced internal tools to streamline data flows.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item gs-reveal">
+        <div class="exp-header">
+          <h3 class="exp-role">Volunteer <span class="exp-company">@ Al Marmoom Initiative</span></h3>
+          <span class="exp-date">2018 – 2022</span>
+        </div>
+        <ul class="exp-details">
+          <li>Assisted during equine therapy sessions for children with special needs.</li>
+          <li>Developed a program to interactively teach stable procedures.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="container">
+    <h2 class="section-title gs-reveal">Some Things I've Built</h2>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="glass-card project-card gs-reveal">
+        <div class="project-header">
+          <i class="far fa-folder folder-icon"></i>
+<!--          <div class="project-links">-->
+<!--            <a href="#" aria-label="GitHub Link"><i class="fab fa-github"></i></a>-->
+<!--          </div>-->
+        </div>
+        <h3 class="project-title"><span class="company-blue">IBM</span> – AI Enhanced Racing Simulator</h3>
+        <div class="project-desc">
+          Processed real-time OBD2 telemetry data from race cars to generate synchronized visual replays.
+          Employed IBM AI models to analyze driving lines and performance metrics.
+          -- Not yet public
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="glass-card project-card gs-reveal">
+        <div class="project-header">
+          <i class="far fa-folder folder-icon"></i>
+          <div class="project-links">
+            <a href="https://students.cs.ucl.ac.uk/2024/group2/index.html" aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <h3 class="project-title"><span class="company-blue">Intel & NAS</span> – 'Reading Star' App</h3>
+        <div class="project-desc">
+          Developed a literacy application using React and REST APIs to deliver interactive content.
+          Optimized AI model inference on Intel NPUs to ensure low-latency, offline functionality.
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="glass-card project-card gs-reveal">
+        <div class="project-header">
+          <i class="far fa-folder folder-icon"></i>
+          <div class="project-links">
+            <a href="https://github.com/EdizCinbas/maple" target="_blank" aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <h3 class="project-title">Maple - Full Stack Blog</h3>
+        <div class="project-desc">
+          Built an open source blogging platform with Java and Spring Boot.
+          Wait a second! You are on it right now! See the source code and deployment guide to make it your own.
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="glass-card project-card gs-reveal">
+        <div class="project-header">
+          <i class="far fa-folder folder-icon"></i>
+          <div class="project-links">
+            <a href="https://github.com/EdizCinbas/BakeryStockManager" aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <h3 class="project-title">Stock Management System</h3>
+        <div class="project-desc">
+          Developed a Python desktop application for a local bakery to automate inventory tracking and reduce waste.
+          Integrated a SQL backend to manage product data, sales records, and supply chain alerts.
+        </div>
+      </div>
+
+    <!-- Project 5 -->
+    <div class="glass-card project-card gs-reveal">
+      <div class="project-header">
+        <i class="far fa-folder folder-icon"></i>
+        <div class="project-links">
+          <a href="https://github.com/EdizCinbas/HelmetGame" aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <h3 class="project-title">Helmet Game for Equine Therapy Centre</h3>
+      <div class="project-desc">
+        Created a web-based educational game using JavaScript to support training special needs kids.
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Dev Log Section (Recent Blog Posts) -->
+  <section id="devlog" class="container">
+    <h2 class="section-title gs-reveal">Dev Log</h2>
+
+    <div class="row g-4">
+      <div class="col-md-4" th:each="post : ${posts}">
+        <div class="blog-card gs-reveal">
+          <span class="blog-date" th:text="${#temporals.format(post.createdAt, 'MMM d, yyyy')}">Date</span>
+          <a th:href="@{'/posts/' + ${post.id}}" class="blog-title d-block" th:text="${post.title}">Post Title</a>
+          <p class="blog-excerpt" th:text="${excerpts[post.id]}">Post excerpt...</p>
+        </div>
+      </div>
+
+      <div class="col-12 text-center mt-5 gs-reveal">
+        <a th:href="@{/blog}" class="btn btn-outline-light px-4 py-2" style="border-color: var(--accent); color: var(--accent);">View Full Dev Blog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="portfolio-footer">
+    <p>Built by Ediz Cinbas</p>
+    <p class="mt-2" style="font-size: 0.8rem; color: #4b5563;">Powered by Maple</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    // Initialize Vanta.js Background
+    document.addEventListener('DOMContentLoaded', () => {
+      VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x6366f1, // matching --accent
+        backgroundColor: 0x050505, // matching --bg-color
+        points: 12.00,
+        maxDistance: 22.00,
+        spacing: 18.00
+      });
+
+      // Register GSAP ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Reveal Animations
+      const revealElements = document.querySelectorAll(".gs-reveal");
+      revealElements.forEach((elem) => {
+        gsap.fromTo(elem,
+          { autoAlpha: 0, y: 50 },
+          {
+            duration: 1,
+            autoAlpha: 1,
+            y: 0,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: elem,
+              start: "top 85%", // when top of element hits 85% of viewport
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+
+      // Active nav link highlight on scroll
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-links a:not(.nav-blog-btn)");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").includes(current)) {
+            link.classList.add("active");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

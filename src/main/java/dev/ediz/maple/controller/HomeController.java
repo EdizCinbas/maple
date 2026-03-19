@@ -18,7 +18,24 @@ public class HomeController {
     private PostService postService;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String portfolio(Model model) {
+        List<Post> posts = postService.getAll();
+        // Limit to 3 most recent posts
+        int limit = Math.min(posts.size(), 3);
+        List<Post> recentPosts = posts.subList(0, limit);
+        
+        Map<Long, String> excerpts = new LinkedHashMap<>();
+        for (Post post : recentPosts) {
+            String excerpt = postService.renderExcerpt(post.getBody(), 200);
+            excerpts.put(post.getId(), excerpt);
+        }
+        model.addAttribute("posts", recentPosts);
+        model.addAttribute("excerpts", excerpts);
+        return "portfolio";
+    }
+
+    @GetMapping("/blog")
+    public String blog(Model model) {
         List<Post> posts = postService.getAll();
         Map<Long, String> excerpts = new LinkedHashMap<>();
         for (Post post : posts) {
@@ -30,4 +47,3 @@ public class HomeController {
         return "home";
     }
 }
-
